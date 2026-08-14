@@ -1,10 +1,14 @@
 import os
 import requests
+from dotenv import load_dotenv
+
+# .env 파일에서 환경 변수 로드
+load_dotenv()
 
 # 1. HF 토큰
 HF_TOKEN = os.environ.get("HF_TOKEN", "").strip()
 if not HF_TOKEN:
-    raise RuntimeError("HF_TOKEN 환경변수가 없습니다. PowerShell에서 $env:HF_TOKEN='hf_...' 설정하세요.")
+    raise RuntimeError("HF_TOKEN이 없습니다. .env 파일에 HF_TOKEN=hf_... 형식으로 입력하세요.")
 
 headers = {
     "Authorization": f"Bearer {HF_TOKEN}",
@@ -39,4 +43,4 @@ def sentiment(text: str):
         "text_head": r.text[:200],
     }
 
-print(sentiment("I don't think that I love using Hugging Face!"))
+print(sentiment("I don't think that I do not love using Hugging Face!"))
