@@ -43,4 +43,5 @@ def sentiment(text: str):
         "text_head": r.text[:200],
     }
 
-print(sentiment("I don't think that I do not love using Hugging Face!"))
+print(sentiment("I don't think that I love using Hugging Face!"))
+# "I don't think that I do not love using Hugging Face!" 경우 감정분석 실패
